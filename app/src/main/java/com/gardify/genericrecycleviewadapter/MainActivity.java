@@ -1,0 +1,45 @@
+package com.gardify.genericrecycleviewadapter;
+
+import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.gardify.genericrecycleviewadapter.Utils.RecyclerViewGenericAdapter;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements RecyclerViewGenericAdapter.OnRecyclerViewItemClickListener<Pet> {
+
+    private RecyclerView testRecycleView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        testRecycleView = findViewById(R.id.test_recycleview);
+
+        ArrayList<Pet> pet = new ArrayList<>();
+        pet.add(new Pet("a","aa"));
+        pet.add(new Pet("b","bb"));
+        pet.add(new Pet("c","cc"));
+        pet.add(new Pet("d","dd"));
+        pet.add(new Pet("e","ee"));
+
+
+        RecyclerViewGenericAdapter<Pet> adapter = new RecyclerViewGenericAdapter<Pet>(pet, this, R.layout.test_pet_row);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        testRecycleView.setLayoutManager(layoutManager);
+
+        testRecycleView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(Pet position) {
+        Toast.makeText(this, "clicked " + position.getName(), Toast.LENGTH_SHORT).show();
+    }
+}
