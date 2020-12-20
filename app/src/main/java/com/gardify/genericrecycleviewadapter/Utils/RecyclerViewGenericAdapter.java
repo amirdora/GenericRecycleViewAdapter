@@ -64,7 +64,7 @@ public class RecyclerViewGenericAdapter<T, V, E> extends RecyclerView.Adapter<Re
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof RecyclerViewGenericAdapter.ItemViewHolder) {
             ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-            itemViewHolder.onBind(position - 1, itemViewHolder);
+            itemViewHolder.onBind((mHeaderData!=null? position-1 : position), itemViewHolder);
         } else if (holder instanceof RecyclerViewGenericAdapter.HeaderViewHolder) {
             HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
             headerViewHolder.onBind(headerViewHolder);
@@ -86,7 +86,7 @@ public class RecyclerViewGenericAdapter<T, V, E> extends RecyclerView.Adapter<Re
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) {
+        if (position == 0 && mHeaderData!=null) {
             return TYPE_HEADER;
         } else if (position == mDataset.size() + 1) {
             return TYPE_FOOTER;
