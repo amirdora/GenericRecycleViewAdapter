@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewGener
 
         RecyclerViewGenericAdapter<Pet, PetHeader, PetFooter> adapter = new RecyclerViewGenericAdapter<>(pet, petHeader,
                 petFooter, this,this,this,
-                R.layout.test_pet_row, R.layout.test_pet_row, R.layout.test_pet_row);
+                R.layout.test_pet_row, R.layout.test_pet_row_header, R.layout.test_pet_row_footer);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         testRecycleView.setLayoutManager(layoutManager);
