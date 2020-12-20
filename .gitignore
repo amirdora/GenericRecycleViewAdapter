@@ -7,3 +7,6 @@
 /.gradle/6.1.1/gc.properties
 /.gradle/vcs-1/gc.properties
 /.gradle/6.1.1/fileChanges/last-build.bin
+/local.properties
+/.gradle/6.1.1/javaCompile/javaCompile.lock
+/.gradle/buildOutputCleanup/outputFiles.bin
