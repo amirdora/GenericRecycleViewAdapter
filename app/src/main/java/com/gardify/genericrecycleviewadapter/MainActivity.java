@@ -1,6 +1,7 @@
 package com.gardify.genericrecycleviewadapter;
 
 import android.os.Bundle;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,8 @@ import com.gardify.genericrecycleviewadapter.Utils.RecyclerViewGenericAdapter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements RecyclerViewGenericAdapter.OnRecyclerViewItemClickListener<Pet> {
+public class MainActivity extends AppCompatActivity implements RecyclerViewGenericAdapter.OnItemClickListener<Pet>,
+        RecyclerViewGenericAdapter.OnItemClickListenerHeader<PetHeader>, RecyclerViewGenericAdapter.OnItemClickListenerFooter<PetFooter> {
 
     private RecyclerView testRecycleView;
 
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewGener
 
         testRecycleView = findViewById(R.id.test_recycleview);
 
+        PetHeader petHeader = new PetHeader("headerName", "pictureUrl");
+
         ArrayList<Pet> pet = new ArrayList<>();
         pet.add(new Pet("a","aa"));
         pet.add(new Pet("b","bb"));
@@ -29,8 +33,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewGener
         pet.add(new Pet("d","dd"));
         pet.add(new Pet("e","ee"));
 
+        PetFooter petFooter = new PetFooter("footerName", "pictureUrl");
 
-        RecyclerViewGenericAdapter<Pet> adapter = new RecyclerViewGenericAdapter<Pet>(pet, this, R.layout.test_pet_row);
+        RecyclerViewGenericAdapter<Pet, PetHeader, PetFooter> adapter = new RecyclerViewGenericAdapter<>(pet, petHeader, petFooter,
+                this,this,this, R.layout.test_pet_row);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         testRecycleView.setLayoutManager(layoutManager);
@@ -41,5 +47,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewGener
     @Override
     public void onItemClick(Pet position) {
         Toast.makeText(this, "clicked " + position.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClickHeader(PetHeader position) {
+
+    }
+
+    @Override
+    public void onItemClickFooter(PetFooter position) {
+
     }
 }
