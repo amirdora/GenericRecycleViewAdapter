@@ -29,9 +29,9 @@ public class RecyclerViewGenericAdapter<T, V, E> extends RecyclerView.Adapter<Re
 
     private int layoutId, layoutIdHeader, layoutIdFooter;
 
-    public RecyclerViewGenericAdapter(ArrayList<T> mDataset, V mHeaderData, E mFooterData, OnItemClickListener<T> onItemClickListener,
-                                      OnItemClickListenerHeader onItemClickListenerHeader, OnItemClickListenerFooter onItemClickListenerFooter
-            ,int layoutId, int layoutIdHeader, int layoutIdFooter) {
+    public RecyclerViewGenericAdapter(ArrayList<T> mDataset,int layoutId, V mHeaderData,int layoutIdHeader,
+                                      E mFooterData, int layoutIdFooter, OnItemClickListener<T> onItemClickListener,
+                                      OnItemClickListenerHeader onItemClickListenerHeader, OnItemClickListenerFooter onItemClickListenerFooter) {
         this.onItemClickListener = onItemClickListener;
         this.onItemClickListenerHeader = onItemClickListenerHeader;
         this.onItemClickListenerFooter = onItemClickListenerFooter;
@@ -88,7 +88,7 @@ public class RecyclerViewGenericAdapter<T, V, E> extends RecyclerView.Adapter<Re
     public int getItemViewType(int position) {
         if (position == 0 && mHeaderData!=null) {
             return TYPE_HEADER;
-        } else if (position == mDataset.size() + 1) {
+        } else if (position == mDataset.size() && mFooterData!=null) {
             return TYPE_FOOTER;
         } else {
             return TYPE_ITEM;
