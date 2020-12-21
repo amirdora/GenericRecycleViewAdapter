@@ -1,4 +1,4 @@
-package com.gardify.genericrecycleviewadapter;
+package com.gardify.genericrecycleviewadapter.Rows;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.gardify.genericrecycleviewadapter.Model.PetFooter;
+import com.gardify.genericrecycleviewadapter.R;
 import com.gardify.genericrecycleviewadapter.Utils.RecyclerViewGenericAdapter;
 
 
@@ -36,6 +38,7 @@ public class PetFooterRow extends LinearLayout implements RecyclerViewGenericAda
 
     @Override
     public void showData(PetFooter item) {
+        mTitleTextView.setText(item.getFooterName());
 
     }
 }

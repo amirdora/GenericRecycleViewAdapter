@@ -1,4 +1,4 @@
-package com.gardify.genericrecycleviewadapter;
+package com.gardify.genericrecycleviewadapter.Rows;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,22 +7,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import com.gardify.genericrecycleviewadapter.Model.PetHeader;
+import com.gardify.genericrecycleviewadapter.R;
 import com.gardify.genericrecycleviewadapter.Utils.RecyclerViewGenericAdapter;
 
 
-public class PetRow extends LinearLayout implements RecyclerViewGenericAdapter.RecyclerViewRow<Pet> {
+public class PetHeaderRow extends LinearLayout implements RecyclerViewGenericAdapter.RecyclerViewRowHeader<PetHeader> {
     private ImageView mImageView;
     private TextView mTitleTextView;
 
-    public PetRow(Context context) {
+    public PetHeaderRow(Context context) {
         super(context);
     }
 
-    public PetRow(Context context, @Nullable AttributeSet attrs) {
+    public PetHeaderRow(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public PetRow(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public PetHeaderRow(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -34,9 +37,8 @@ public class PetRow extends LinearLayout implements RecyclerViewGenericAdapter.R
     }
 
     @Override
-    public void showData(Pet item) {
-        mTitleTextView.setText(item.getName());
-        //Picasso.with(getContext()).load(pet.getUrl()).into(mImageView);
-    }
+    public void showData(PetHeader item) {
+        mTitleTextView.setText(item.getHeaderName());
 
+    }
 }

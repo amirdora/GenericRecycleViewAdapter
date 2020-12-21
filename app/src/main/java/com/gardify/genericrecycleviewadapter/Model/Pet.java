@@ -1,4 +1,4 @@
-package com.gardify.genericrecycleviewadapter;
+package com.gardify.genericrecycleviewadapter.Model;
 
 public class Pet {
     private String name;

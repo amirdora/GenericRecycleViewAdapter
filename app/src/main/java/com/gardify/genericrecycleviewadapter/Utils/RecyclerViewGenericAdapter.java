@@ -84,11 +84,19 @@ public class RecyclerViewGenericAdapter<T, V, E> extends RecyclerView.Adapter<Re
         return mDataset.size();
     }
 
+    private int getLastPosition() {
+        return getItemCount() - 1;
+    }
+
+    private boolean isLastPosition(int position) {
+        return position == getLastPosition();
+    }
+
     @Override
     public int getItemViewType(int position) {
         if (position == 0 && mHeaderData!=null) {
             return TYPE_HEADER;
-        } else if (position == mDataset.size() && mFooterData!=null) {
+        } else if (isLastPosition(position) && mFooterData!=null) {
             return TYPE_FOOTER;
         } else {
             return TYPE_ITEM;

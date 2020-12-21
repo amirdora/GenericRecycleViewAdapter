@@ -1,13 +1,15 @@
 package com.gardify.genericrecycleviewadapter;
 
 import android.os.Bundle;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gardify.genericrecycleviewadapter.Model.Pet;
+import com.gardify.genericrecycleviewadapter.Model.PetFooter;
+import com.gardify.genericrecycleviewadapter.Model.PetHeader;
 import com.gardify.genericrecycleviewadapter.Utils.RecyclerViewGenericAdapter;
 
 import java.util.ArrayList;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewGener
         PetFooter petFooter = new PetFooter("footerName", "pictureUrl");
 
         RecyclerViewGenericAdapter<Pet, PetHeader, PetFooter> adapter = new RecyclerViewGenericAdapter<>(pet,
-                R.layout.test_pet_row, null, R.layout.test_pet_row_header, petFooter,
+                R.layout.test_pet_row, petHeader, R.layout.test_pet_row_header, petFooter,
                 R.layout.test_pet_row_footer, this,this,
                 this);
 
